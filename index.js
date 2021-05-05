@@ -48,7 +48,7 @@ db.connect();
 require('./configs/passport')(passport)
 //routers
 Router(app)
-const sever = app.listen(port,()=>{
+const sever = app.listen(process.env.PORT,()=>{
     console.log(`http://localhost:${port}`)
 })
 const io = socketio(sever)
