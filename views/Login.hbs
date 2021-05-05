@@ -1,0 +1,27 @@
+﻿<div class="login_base">
+    <div class="login_container">
+        <h2 class="title_form">Đăng nhập</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label for="username">Tài khoản:</label>
+                <input type="text" class="form-control" id="username" placeholder="Nhập tài khoản" name="username">
+            </div>
+            <div class="form-group">
+                <label for="pw">Mật khẩu:</label>
+                <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu"
+                    name="password">
+            </div>
+            <div>
+                <a href="/acc/auth/google">
+                    <button type="button" class="btn_gg"><i class="fab fa-google-plus-g"></i>Login with Google</button>
+                </a>
+            </div>
+            {{#each msg}}
+                <div class="alert alert-danger" role="alert">
+                    {{this}}
+                </div>
+            {{/each}}
+            <button type="submit" class="btn btn-primary btn_form">Đăng nhập</button>
+        </form>
+    </div>
+</div>

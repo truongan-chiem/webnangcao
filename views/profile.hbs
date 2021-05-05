@@ -1,0 +1,97 @@
+
+      <!-- wrapper start -->
+      <div class="wrapper">
+        <!-- header menu start -->
+        {{>header}}
+        <!-- header menu end -->
+
+        <!-- slidebar start -->
+        {{>slidebar}}
+        <!-- sliderbar end -->
+
+        <!-- main container start -->
+        <div class="main-container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="nav-link-anounouces shadow" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">THÔNG TIN TÀI KHOẢN</li>
+                        </ol>
+                      </nav>
+                </div>
+                <div class="col-11 mx-auto p-0">
+                    <div class="box-profile px-3 px-md-5 py-4 shadow">
+                        <h3>THÔNG TIN SINH VIÊN</h3>
+                        <form action="/acc/profile?_method=PUT" method="POST" enctype="multipart/form-data">
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="name">
+                                    Họ tên:
+                                </label>
+                                <input value="{{user.name}}" class="form-control col-lg-10" type="text" name="name" id="name" placeholder="Nhập họ tên sinh viên...">
+                            </div>
+                            
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="email">
+                                    Email:
+                                </label>
+                                <input value={{user.google.email}} class="form-control col-lg-10" disabled type="email" name="email" id="email" placeholder="Nhập email sinh viên...">
+                            </div>
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="classstudent">
+                                    Lớp:
+                                </label>
+                                <input value='{{classstudent}}' class="form-control col-lg-10" type="text" name="classstudent" id="classstudent" placeholder="Nhập mã lớp...">
+                            </div>
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="faculty">
+                                    Khoa:
+                                </label>
+                                <input value="{{faculty}}" class="form-control col-lg-10" type="text" name="faculty" id="faculty" placeholder="Nhập khoa...">
+                            </div>
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="major">
+                                    Ngành:
+                                </label>
+                                <input value="{{major}}" class="form-control col-lg-10" type="text" name="major" id="major" placeholder="Nhập ngành đang học...">
+                            </div>
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="image">
+                                    Hình ảnh:
+                                </label>
+                                <input class="form-control col-lg-10" type="file" name="image" id="image" >
+                            </div>
+                            {{#each errorProfile}}
+                                <div class="alert alert-danger" role="alert">
+                                    {{this}}
+                                </div>
+                            {{/each}}
+                            {{#each successProfile}}
+                                <div class="alert alert-success" role="alert">
+                                    {{this}}
+                                </div>
+                            {{/each}}
+                            <div class="btn-update d-flex justify-content-center">
+                                <button class="btn btn-primary px-4">Cập nhật</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main container end -->
+      </div>  
+      <!-- wrapper end -->
+    
+    <!-- scroll back to top start -->
+    <button class="scroll-to-top shadow"><i class="fa fa-chevron-up"></i></button>
+    <!-- scroll back to top end -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- my script -->
+    <script src="/js/index.js"></script>

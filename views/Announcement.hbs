@@ -1,0 +1,164 @@
+<!-- wrapper start -->
+<div class="wrapper">
+    <!-- header menu start -->
+    {{>header}}
+    <!-- header menu end -->
+
+    <!-- slidebar start -->
+    {{>slidebar}}
+    <!-- sliderbar end -->
+
+    <!-- main container start -->
+    <div class="main-container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="nav-link-anounouces shadow" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">DANH SÁCH THÔNG BÁO</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-11 mx-auto p-0">
+                <div class="body-all-announces p-3 shadow">
+                    <div class="row">
+                        {{!-- <div class="col-md-4">
+                            <input class="form-control" type="text" placeholder="Tìm kiếm theo tên thông báo">
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control" type="text" placeholder="Tìm kiếm trong nội dung thông báo">
+                        </div> --}}
+                        <div class="col-md-4">
+                            <select class="form-control my-select-donvi" id="inputGroupSelectDonVi"
+                                name="inputGroupSelectDonVi">
+                                <option selected>Chọn Khoa/Phòng</option>
+                                <option value="cthssv" title="Phòng CTHSSV">Phòng CTHSSV</option>
+                                <option value="phongdaihoc" title="Phòng Đại học">Phòng Đại học</option>
+                                <option value="phongsaudaihoc" title="Phòng Sau đại học">Phòng Sau đại học</option>
+                                <option value="pdtvmaytinh" title="Phòng Điện toán và máy tính">Phòng Điện toán và máy tính
+                                </option>
+                                <option value="atem" title="Trung tâm phát triển Khoa học quản lý và Ứng dụng công nghệ">Trung tâm phát triển Khoa học quản lý và Ứng dụng công nghệ
+                                </option>
+                                <option value="pktvkdchatluong" title="Phòng Khảo thí và KĐCL">Phòng Khảo thí và KĐCL</option>
+                                <option value="ptaichinh" title="Phòng Tài chính">Phòng Tài chính</option>
+                                <option value="tdtclc" title="TDT Creative Language Center">TDT Creative Language Center
+                                </option>
+                                
+                                <option value="tttinhoc" title="Trung tâm tin học">Trung tâm tin học</option>
+            
+                                <option value="sdtc" title="Trung tâm đào tạo phát triển xã hội (SDTC)">Trung tâm đào tạo
+                                    phát triển xã hội (SDTC)</option>
+                                
+                                
+                                <option value="tthtdnvcsinhvien" title="TT Hợp tác doanh nghiệp và cựu sinh viên">TT Hợp tác doanh
+                                    nghiệp và cựu sinh viên</option>
+                                <option value="khoaluat" title="Khoa Luật">Khoa Luật</option>
+                               
+                                <option value="ttnnthbdvanhoa" title="TT Ngoại ngữ - Tin học - Bồi dưỡng Văn hóa (CIFLEET)">TT
+                                    Ngoại ngữ - Tin học - Bồi dưỡng Văn hóa (CIFLEET)</option>
+                                
+                               
+                                <option value="vcsktvkinhdoanh" title="Viện chính sách kinh tế và kinh doanh (IBEP)">Viện chính sách
+                                    kinh tế và kinh doanh (IBEP)</option>
+                              
+                                <option value="kmtcongnghiep" title="Khoa Mỹ thuật Công nghiệp">Khoa Mỹ thuật Công nghiệp</option>
+                               
+                                <option value="kddientu" title="Khoa Điện - Điện tử">Khoa Điện - Điện tử</option>
+                                <option value="kcnthongtin" title="Khoa Công nghệ thông tin">Khoa Công nghệ thông tin</option>
+                            
+                                <option value="kqtkinhdoanh" title="Khoa Quản trị kinh doanh">Khoa Quản trị kinh doanh</option>
+                               
+                                <option value="kmtvbhlaodong" title="Khoa Môi trường và Bảo hộ lao động">Khoa Môi trường và Bảo hộ
+                                    lao động</option>
+                                <option value="kldcongdoan" title="Khoa Lao động công đoàn">Khoa Lao động công đoàn</option>
+                                <option value="ktcnganhang" title="Khoa Tài chính ngân hàng">Khoa Tài chính ngân hàng</option>
+                                
+                                <option value="kgdquocte" title="Khoa Giáo dục quốc tế">Khoa Giáo dục quốc tế</option>
+                            </select>
+                        </div>
+                        {{#xif user.role '!=' 'student'}}
+                        <div class="col-lg-8 col-md-5 col-sm-6 text-right mt-2 mt-sm-0">
+                                <a href="/announce/create">
+                                    <button class="btn btn-secondary">Tạo thông báo</button>
+                                </a>
+                            </div>
+                        {{/xif}}
+                        <div class="col-12">
+                            <div class="list-page-navigation my-3">
+                                <ul class="pagination">
+                                    <li class="page-item clickPrePage"><a class="page-link">Previous</a></li>
+                                    <li class="page-item clickNextPage"><a class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+
+                            {{!-- display announce --}}
+                            <script type="text/x-handlebars-template" id="greeting-template-announce">
+                                    \{{#each data}}
+                                    <li class="item p-3 mb-3">
+                                        \{{#xif this.idUserCreateAnnounce '==' ../currentId }}
+                                            <div class="list-select-announces">
+                                                <button data-iddel="\{{this._id}}" data-toggle="modal" data-target="#delAnnounce" class="btn-delete-announces" title="delete"><i class="fa fa-times-circle"></i></button>
+                                                <a href="/announce/\{{this._id}}/edit"><button class="btn-edit-announces mt-1" title="edit"><i class="fa fa-wrench"></i></button></a>
+                                            </div>
+                                        \{{/xif}}
+                                        <p class="item-header">
+                                            \{{this.title}}
+                                        </p>
+                                        <p class="item-content my-2">
+                                           \{{this.content}} 
+                                        </p>
+                                        <p class="item-footer d-flex justify-content-between">
+                                            <a href="/announce/\{{_id}}/detail">Chi tiết thống báo</a>
+                                            <span class="info-name-time">
+                                                \{{this.userCreate.name}} | Ngày đăng   \{{this.createdAnnounce}}
+                                            </span>
+                                        </p>
+                                    </li>
+                                    \{{/each}}
+                                </script>
+
+                            <div class="content-box-all-announces mt-3" id="html_display_announce">
+                                {{!-- Display template html receive data from ajax --}}
+                            </div>
+                            {{!-- end display --}}
+                            <div class="list-page-navigation mt-3">
+                                <ul class="pagination mb-0">
+                                    <li class="page-item clickPrePage"><a class="page-link">Previous</a></li>
+                                    <li class="page-item clickNextPage"><a class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main container end -->
+</div>
+<!-- wrapper end -->
+
+<!-- scroll back to top start -->
+<button id="scrollAnnounce" class="scroll-to-top shadow"><i class="fa fa-chevron-up"></i></button>
+<!-- scroll back to top end -->
+{{!-- form hiiden to del --}}
+<form name="form__hidden" method="POST"></form>
+<!-- Modal edit cmt -->
+<div id="delAnnounce" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa thông báo?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa thông báo này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirmDelAnnounce" type="button" class="btn btn-danger">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>

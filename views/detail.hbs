@@ -1,0 +1,51 @@
+
+      <!-- wrapper start -->
+      <div class="wrapper">
+        <!-- header menu start -->
+        {{>header}}
+        <!-- header menu end -->
+
+        <!-- slidebar start -->
+        {{>slidebar}}
+        <!-- sliderbar end -->
+
+        <!-- main container start -->
+        <div class="main-container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="nav-link-anounouces shadow" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+                          <li class="breadcrumb-item"><a href="/announce">DANH SÁCH THÔNG BÁO</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">CHI TIẾT THÔNG BÁO</li>
+                        </ol>
+                      </nav>
+                </div>
+                <div class="col-11 mx-auto p-0">
+                    <div class="body-all-announces p-4 shadow">
+                        <div class="row">
+                            <div class="col-12">
+                                {{#each announce}}
+                                    <div class="content-box-all-announces mt-3">
+                                        <div class="detail-announces p-4">
+                                            <h1 class="title-detail mt-3 mb-5">{{title}}</h1>
+                                            <a href="" class="place-date mb-3">{{userCreate.name}} | {{createdAnnounce}}</a>
+                                            <pre class="content-detail">
+                                                {{content}}
+                                            </pre>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main container end -->
+      </div>  
+      <!-- wrapper end -->
+    
+    <!-- scroll back to top start -->
+    <button class="scroll-to-top shadow"><i class="fa fa-chevron-up"></i></button>
+    <!-- scroll back to top end -->

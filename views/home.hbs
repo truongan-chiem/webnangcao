@@ -1,0 +1,297 @@
+
+      <!-- wrapper start -->
+      <div class="wrapper">
+        <!-- header menu start -->
+        {{>header}}
+        <!-- header menu end -->
+
+        <!-- slidebar start -->
+        {{>slidebar}}
+        <!-- sliderbar end -->
+
+        <!-- main container start -->
+        <div class="main-container">
+            <div class="row">
+                <div class="col-md-8 order-md-0 order-1">
+                    <!-- post anounce -->
+                    
+                    <div id="seversendmess_class" class="post-anounce shadow alert alert-info mb-3 mt-md-0 mt-sm-3">
+                        <p class="text-anounce alert-heading m-0"> 
+                            <span id="seversendmess" class="content text-primary">Khoa CNTT</span> vừa đăng một thông báo!!!
+                        </p>
+                    </div>
+                {{!-- form start bai viet --}}
+                    <form id="formbaiviet"  class="post-form shadow mt-md-0 mt-3 mb-3" >
+                        <h5 class="slogan pt-2 pl-3">Send something</h5>
+                        <hr class="mx-3 my-2">
+                        <div class="post-comment-box d-flex justify-content-around align-content-center flex-wrap">
+                            <div class="user-img">
+                                   <img src="/uploads/{{user.image}}" alt="user">
+                            </div>
+                            <div class="form-group flex-fill w-50 overflow-hidden">
+                                <div class="input-group">
+                                    <textarea id="noidungbaiviet" class="form-control shadow-none py-3 border-0" cols="30" rows="3" placeholder="What's something?"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-form-control d-flex flex-wrap mx-3">
+                            <div class="post-form-control-select d-flex flex-wrap">
+                                {{!-- <input id="inputImgPost" name="photoPost" type="file"> --}}
+                                <label for="inputImgPost">
+                                    <i class="fa fa-image"></i>
+                                    Load Image/Video
+                                </label>
+                                <input id="inputImgPost" name="photoPost" type="file" class="form-control d-none" >
+                            </div>
+
+                            <div class="post-form-control-btn flex-fill w-50 text-right">
+                                <button id="btn_send" class="btn btn-post-form btn-primary">Send</button>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-3 flex-wrap justify-content-start"></div>
+                    </form>
+                    {{!-- form end bai viet --}}
+
+                    <script type="text/x-handlebars-template"  id="greeting-template">
+                    
+                           \{{#each posts}}
+                           
+                           <div class="post-contain mt-5 delPost\{{this._id}}"> {{!chổ này đặt class = delPost+id là để xóa bài viết }}
+                                <div class="post shadow px-1 pb-3">
+                                    {{!-- Kiểm tra user hiện tại có phải là chủ của bài viết  --}}
+                                    \{{#xif this.idUser '==' ../currentId}}
+                                        <div class="list-select"><i data-pid="\{{this._id}}" class="fa fa-ellipsis-h"></i></div>
+                                        <div class="menu-select-btn shadow menu-select-1\{{this._id}}">
+                                            <li><button data-idpost="\{{this._id}}" data-toggle="modal" data-target="#confirmDelPost">Delete</button></li>
+                                            <li><button data-idpost="\{{this._id}}" data-toggle="modal" data-target="#EditPost">Edit</button></li>
+                                        </div>
+                                   \{{/xif}}
+                                    <div class="user-post d-inline-flex justify-content-center align-content-center">
+                                        <div class="post-user-img user-img">
+                                            <img class="border-radius" src="/uploads/\{{this.InfoUser.image}}" alt="Image of User">
+                                        </div>
+                                        <div class="post-user-info d-flex justify-content-center flex-column">
+                                            <span class="post-user-name user-name d-block">\{{this.InfoUser.name}}</span>
+                                            <span class="post-user-time d-block">\{{this.createdPost}}</span>
+                                        </div>
+                                    </div>
+                                    {{!-- Chổ này đặt id vì để có thể hiển thị nội dung sau khi update bài viết --}}
+                                    <p id="noidung\{{this._id}}" class="post-content mt-3 mx-3">\{{this.noidungbaiviet}}</p>
+                                    \{{#if this.photoPost}}
+                                        <div class="post-img d-flex flex-wrap mx-3">
+                                            <div class="row m-0">
+                                                <div class="post-img-contain">
+                                                    <div class="post-media w-100 h-100">
+                                                        {{!-- chổ này đặt id vì để có thể hiển thị được hình ảnh khi update bài viết --}}
+                                                        <img id="img\{{this._id}}" src="/uploads/\{{this.photoPost}}" alt="Image of Post">
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    \{{/if}}
+                                    <hr class="mx-3 my-2">
+                                    <div class="post-info-btn">
+                                        <ul class="d-flex justify-content-around flex-wrap mb-2">
+                                            <li><i class="fa fa-comment-alt"></i>
+                                                <span class="d-none d-md-inline-block">Comment</span>
+                                            </li>
+                                            <li><i class="fa fa-heart"></i>
+                                                <span class="d-none d-md-inline-block">Liked</span>
+                                            </li>
+                                            <li><i class="fa fa-bookmark"></i>
+                                                <span class="d-none d-md-inline-block">Saved</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr class="mx-3 my-2">
+                                    {{!-- Cmt start --}}
+                                    <div class="post-comment-box d-flex flex-wrap align-items-center">
+                                        <div class="post-user-img user-img">
+                                            <img class="border-radius" src="/uploads/{{user.image}}" alt="Image of User">
+                                        </div>
+                                        <div class="form-group flex-fill w-50 post-comment-form overflow-hidden mb-0">
+                                            <div class="input-group pr-3">
+                                                <input id="\{{this._id}}"  type="text" class="form-control shadow-none py-3" placeholder="Send your reply">
+                                                <label class="input-group-text send pointer" for="focus\{{this._id}}">
+                                                    <i class="fa fa-paper-plane"></i>
+                                                </label>
+                                                <button data-id="\{{this._id}}"  type="button" class="form-control d-none inputCmt" id="focus\{{this._id}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="mx-3 my-2">
+                                    {{!-- Cmt end --}}
+                                    {{!-- Display cmts start --}}
+                                    <div class="\{{this._id}}">
+                                        \{{#each this.CmtInPost}}
+                                        <div class="post-comment-box d-flex flex-wrap pt-3 delCmt\{{this._id}}"> {{! chổ này đặt class delCmt+id để thực hiện xóa comment  }}
+                                            <div class="post-user-img user-img">
+                                                <img class="border-radius" src="/uploads/\{{this.imageUserCmt}}" alt="Image of User">
+                                            </div>
+                                            <div class="post-comment-contain w-75 flex-grow-1 pt-3 pt-md-0 mr-3">
+                                                <div class="form-group post-comment-content p-3 overflow-hidden mb-0">
+                                                \{{#xif this.idUserCmt '==' ../../currentId}}
+                                                    <div class="list-select-comment"><i data-cid="\{{this._id}}" class="fa fa-ellipsis-h"></i></div>
+                                                    <div class="menu-select-comment-btn shadow menu-select-2\{{this._id}}">
+                                                        <li><button data-idcmt="\{{this._id}}" data-toggle="modal" data-target="#confirmDelCmt">Delete</button></li>
+                                                        <li><button data-idcmt="\{{this._id}}" data-toggle="modal" data-target="#EditCmt">Edit</button></li>
+                                                    </div>
+                                                \{{/xif}}
+                                                    <div class="post-comment-author">
+                                                        <a href="#" class="post-comment-author-name color-black">\{{this.nameUserCmt}}</a>
+                                                        <span class="post-comment-author-time d-md-inline-block d-block mx-md-2">\{{this.createdCmt}}</span>
+                                                    </div>
+                                                    <p id="binhluan\{{this._id}}" class="post-comment-text mt-3">\{{this.cmt}}</p>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        \{{/each}}
+                                    </div>
+                                    {{!-- Display cmts end --}}
+                                </div>
+                            </div>
+                            \{{/each}}
+                    </script>
+                    <!-- post timeline start -->
+                    <div id="html_display">
+                        {{!-- Display template html receive data from ajax --}}
+                    </div>
+                    <!-- post timeline end -->
+                </div>
+                <div class="col-md-4 order-md-1 order-0">
+                    
+                    {{!--  thong bao --}}
+                    <div class="announces shadow">
+                        <div class="header-announces border-bottom">
+                            <span class="title">
+                                Thông báo mới
+                            </span>
+                            <a href="/announce" class="watch-all">
+                                Xem tất cả
+                            </a>
+                        </div>
+                        <div class="body-announces">
+                            <div class="content-box p-3">
+                                {{#each announce}}
+                                    <li class="item">
+                                        <p class="item-header">
+                                            <span class="name">[{{this.userCreate.name}}]</span>
+                                            -
+                                            <span class="date">{{this.createdAnnounce}}</span>
+                                        </p>
+                                        <a href="/announce/{{this._id}}/detail" class="item-content">
+                                            {{this.title}}
+                                        </a>
+                                        <p class="item-footer">
+                                            Sinh viên vui lòng xem chi tiết trong thông báo
+                                        </p>
+                                    </li>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- main container end -->
+      </div>  
+      <!-- wrapper end -->
+    
+    <!-- scroll back to top start -->
+    <button class="scroll-to-top shadow"><i class="fa fa-chevron-up"></i></button>
+    <!-- scroll back to top end -->
+    <!-- Optional JavaScript -->
+ 
+<!-- Modal deletePost -->
+<div id="confirmDelPost" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa bài viết?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa bài viết này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirmDel" type="button" class="btn btn-danger">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal deleteComment -->
+<div id="confirmDelCmt" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa bình luận?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa bình luận này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="DelCmt" type="button" class="btn btn-danger">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal edit post -->
+<div id="EditPost" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sửa bài viết</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>  
+                        <label for="ndbv">Nội dung bài viết:</label>  
+                        <input type="text" name="noidungbaiviet" id="ndbv" class="form-control" />  
+                        <br />  
+                        <label>Hình ảnh:</label>  
+                        <input type="file" name="imgPost" id="imgPost" class="form-control" />  
+                        <br /> 
+                        <button id="editpost" type="button" class="btn btn-primary">Cập nhật</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button> 
+                </form>  
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Modal edit cmt -->
+<div id="EditCmt" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sửa bình luận</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>  
+                        <label for="ndcmt">Nội dung bình luận:</label>  
+                        <input type="text" name="cmt" id="ndcmt" class="form-control" />  
+                        <br />  
+                        
+                        <button id="editcmt" type="button" class="btn btn-primary">Cập nhật</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button> 
+                </form>  
+            </div>
+            
+        </div>
+    </div>
+</div>

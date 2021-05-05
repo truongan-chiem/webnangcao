@@ -1,0 +1,73 @@
+<div class="slidebar">
+    <div class="slidebar-menu">
+        <center class="profile">
+            <img src="/uploads/{{user.image}}" alt="user">
+            
+            <p>{{user.name}}</p>
+        </center>
+        <li class="item">
+            <a href="/" class="menu-btn">
+                <i class="fa fa-home"></i><span>Trang chủ</span>
+            </a>
+        </li>
+        <li class="item" id="profile">
+            <a href="" class="menu-btn">
+                <i class="fas fa-user-circle"></i>
+                <span>Hồ sơ<i class="fas fa-chevron-down drop-down"></i></span>
+            </a>
+            <div class="sub-menu">
+                {{#xif user.role '==' 'student'}}
+                    <a href="/acc/profile">
+                        <i class="fas fa-address-card"></i>
+                        <span>Thông tin cá nhân</span>
+                    </a>
+                {{/xif}}
+                {{#xif user.role '!=' 'student' }}
+                    <a href="/acc/updatepw">
+                        <i class="fas fa-lock"></i>
+                        <span>Thay đổi mật khẩu</span>
+                    </a>
+                {{/xif}}
+            </div>
+        </li>
+        <li class="item" id="messages">
+            <a href="" class="menu-btn">
+                <i class="fas fa-envelope"></i>
+                <span>Phân loại<i class="fas fa-chevron-down drop-down"></i></span>
+            </a>
+            <div class="sub-menu">
+                <a href="/announce/room">
+                    <i class="fas fa-users"></i>
+                    <span>Danh sách người dùng</span>
+                </a>
+                <a href="/announce">
+                    <i class="fas fa-envelope-square"></i>
+                    <span>Tất cả thông báo</span>
+                </a>
+            </div>
+        </li>
+        <li class="item" id="settings">
+            <a href="" class="menu-btn">
+                <i class="fas fa-cog"></i>
+                <span>Cài đặt<i class="fas fa-chevron-down drop-down"></i></span>
+            </a>
+            <div class="sub-menu">
+                {{#xif user.role '==' 'admin'}}
+                    <a href="/acc/register">
+                        <i class="fa fa-user-plus"></i>
+                        <span>Tạo tài khoản</span>
+                    </a>
+                {{/xif}}
+                <a href="/acc/logout">
+                    <i class="fa fa-sign-out-alt"></i>
+                    <span>Đăng xuất</span>
+                </a>
+            </div>
+        <li class="item">
+            <a href="" class="menu-btn">
+                <i class="fas fa-info-circle"></i><span>About</span>
+            </a>
+        </li>
+        </li>
+    </div>
+</div>

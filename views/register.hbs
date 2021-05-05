@@ -1,0 +1,213 @@
+
+      <!-- wrapper start -->
+      <div class="wrapper">
+        <!-- header menu start -->
+        {{>header}}
+        <!-- header menu end -->
+
+        <!-- slidebar start -->
+        {{>slidebar}}
+        <!-- sliderbar end -->
+
+        <!-- main container start -->
+        <div class="main-container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="nav-link-anounouces shadow" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">TẠO TÀI KHOẢN</li>
+                        </ol>
+                      </nav>
+                </div>
+                <div class="col-11 mx-auto p-0">
+                    <div class="box-profile px-3 px-md-5 py-4 shadow">
+                        <h3>TẠO TÀI KHOẢN</h3>
+                        <form action="" enctype="multipart/form-data" method="POST">
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="username">
+                                    Tài khoản:
+                                </label>
+                                <input value="{{username}}" class="form-control col-lg-10" type="text" name="username" id="username" placeholder="Nhập tài khoản...">
+                            </div>
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="password">
+                                    Mật khẩu:
+                                </label>
+                                <input value="{{password}}" class="form-control col-lg-10" type="password" name="password" id="password" placeholder="Nhập mật khẩu ...">
+                            </div>
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="repassword">
+                                    Nhập lại mật khẩu:
+                                </label>
+                                <input value="{{repassword}}"  class="form-control col-lg-10" type="password" name="repassword" id="repassword" placeholder="Nhập lại mật khẩu...">
+                            </div>
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="image">
+                                    Hình ảnh đại diện:
+                                </label>
+                                <input class="form-control col-lg-10" type="file" name="image" id="image">
+                            </div>
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" for="name">
+                                    Tên Phòng/Khoa:
+                                </label>
+                                <input  value="{{name}}" class="form-control col-lg-10" type="text" name="name" id="name" placeholder="Nhập tên phòng/khoa...">
+                            </div>
+                            <div class="form-group row px-3 px-lg-5">
+                                <label class="col-lg-2 col-form-label" >
+                                    Chức vụ:
+                                </label>
+                                <div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check1">
+                                            <input type="checkbox" class="form-check-input" id="check1" name="role" value="cthssv">Phòng Công tác học sinh sinh viên
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check2">
+                                            <input type="checkbox" class="form-check-input" id="check2" name="role" value="phongdaihoc">Phòng Đại học
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check3">
+                                            <input type="checkbox" class="form-check-input" id="check3" name="role" value="phongsaudaihoc">Phòng sau đại học
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check4">
+                                            <input type="checkbox" class="form-check-input" id="check4" name="role" value="pdtvmaytinh">Phòng điện toán và máy tính
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check5">
+                                            <input type="checkbox" class="form-check-input" id="check5" name="role" value="pktvkdchatluong">Phòng khảo thí và kiểm định chất lượng
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check6">
+                                            <input type="checkbox" class="form-check-input" id="check6" name="role" value="ptaichinh">Phòng tài chính
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check7">
+                                            <input type="checkbox" class="form-check-input" id="check7" name="role" value="tdtclc">TDT Creative Language Center
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check8">
+                                            <input type="checkbox" class="form-check-input" id="check8" name="role" value="tttinhoc">Trung tâm tin học
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check9">
+                                            <input type="checkbox" class="form-check-input" id="check9" name="role" value="sdtc">Trung tâm đào tạo phát triển xã hội
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check10">
+                                            <input type="checkbox" class="form-check-input" id="check10" name="role" value="atem">Trung tâm phát triển Khoa học quản lý và Ứng dụng công nghệ
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check11">
+                                            <input type="checkbox" class="form-check-input" id="check11" name="role" value="tthtdnvcsinhvien">Trung tâm hợp tác doanh nghiệp và cựu sinh viên
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check12">
+                                            <input type="checkbox" class="form-check-input" id="check12" name="role" value="khoaluat">Khoa Luật
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check13">
+                                            <input type="checkbox" class="form-check-input" id="check13" name="role" value="ttnnthbdvanhoa">Trung tâm ngoại ngữ - tin học – bồi dưỡng văn hóa
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check14">
+                                            <input type="checkbox" class="form-check-input" id="check14" name="role" value="vcsktvkinhdoanh">Viện chính sách kinh tế và kinh doanh
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check15">
+                                            <input type="checkbox" class="form-check-input" id="check15" name="role" value="kmtcongnghiep">Khoa Mỹ thuật công nghiệp
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check16">
+                                            <input type="checkbox" class="form-check-input" id="check16" name="role" value="kddientu">Khoa Điện – Điện tử
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check17">
+                                            <input type="checkbox" class="form-check-input" id="check17" name="role" value="kcnthongtin">Khoa Công nghệ thông tin
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check18">
+                                            <input type="checkbox" class="form-check-input" id="check18" name="role" value="kqtkinhdoanh">Khoa Quản trị kinh doanh
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check19">
+                                            <input type="checkbox" class="form-check-input" id="check19" name="role" value="kmtvbhlaodong">Khoa Môi trường và bảo hộ lao động
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check20">
+                                            <input type="checkbox" class="form-check-input" id="check20" name="role" value="kldcongdoan">Khoa Lao động công đoàn
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check21">
+                                            <input type="checkbox" class="form-check-input" id="check21" name="role" value="ktcnganhang">Khoa Tài chính ngân hàng
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="check22">
+                                            <input type="checkbox" class="form-check-input" id="check22" name="role" value="kgdquocte">Khoa giáo dục quốc tế
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            {{#each errorRegister}}
+                                <div class="alert alert-danger" role="alert">
+                                    {{this}}
+                                </div>
+                            {{/each}}
+                            {{#each successRegister}}
+                                <div class="alert alert-success" role="alert">
+                                    {{this}}
+                                </div>
+                            {{/each}}
+                            <div class="btn-update d-flex justify-content-center">
+                                <button class="btn btn-primary px-4">Tạo tài khoản</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main container end -->
+      </div>  
+      <!-- wrapper end -->
+    
+    <!-- scroll back to top start -->
+    <button class="scroll-to-top shadow"><i class="fa fa-chevron-up"></i></button>
+    <!-- scroll back to top end -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- my script -->
+    <script src="/js/index.js"></script>

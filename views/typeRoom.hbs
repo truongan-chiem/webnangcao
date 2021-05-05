@@ -1,0 +1,51 @@
+
+      <!-- wrapper start -->
+      <div class="wrapper">
+        <!-- header menu start -->
+        {{>header}}
+        <!-- header menu end -->
+
+        <!-- slidebar start -->
+        {{>slidebar}}
+        <!-- sliderbar end -->
+        <!-- main container start -->
+        <div class="main-container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="nav-link-anounouces shadow" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="/">TRANG CHỦ</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">DANH SÁCH NGƯỜI DÙNG</li>
+                        </ol>
+                      </nav>
+                </div>
+                <div class="col-11 mx-auto p-0">
+                    <div class="box-type-of-room px-3 py-4 shadow">
+                        <h3>DANH SÁCH NGƯỜI DÙNG</h3>
+                        <hr class="mx-3 my-2">
+                        <div class="row">
+                          {{#each users}}
+                            
+                                <a href="/baiviet/all/{{_id}}" class="col-2">
+                                    <div class="card text-white bg-dark mt-3">
+                                      <img class="card-img-top" src="/uploads/{{image}}" alt="AvatarUser">
+                                      <div class="card-body text-center">
+                                        <p class="card-title-room mb-0">{{name}}</p>
+                                      </div>
+                                    </div>
+                                </a>
+                            
+                          {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main container end -->
+      </div>  
+      <!-- wrapper end -->
+    
+    <!-- scroll back to top start -->
+    <button class="scroll-to-top shadow"><i class="fa fa-chevron-up"></i></button>
+    <!-- scroll back to top end -->
+  
