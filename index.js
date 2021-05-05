@@ -48,16 +48,13 @@ db.connect();
 require('./configs/passport')(passport)
 //routers
 Router(app)
-// const sever = app.listen(process.env.PORT,()=>{
-//     console.log(`http://localhost:${port}`)
-// })
-// const io = socketio(sever)
+const sever = app.listen(port,()=>{
+    console.log(`http://localhost:${port}`)
+})
+const io = socketio(sever)
 
-// io.on('connection',function(client){
-//     client.on('thongbao',function(data){
-//         client.broadcast.emit('sever-emit',data)
-//     })
-// })
-app.listen(process.env.PORT,()=>{
-        console.log(`http://localhost:${port}`)
+io.on('connection',function(client){
+    client.on('thongbao',function(data){
+        client.broadcast.emit('sever-emit',data)
     })
+})
